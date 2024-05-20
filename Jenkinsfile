@@ -11,7 +11,7 @@ pipeline{
            
             steps{
                scripts{
-                input message: 'deploy to any enviroment', ok: 'Done', parameters: [ choice(name: "ENV", choices: ["dev", "staging", "prod"], description: "")]
+                env.ENV=input message: 'deploy to any enviroment', ok: 'Done', parameters: [ choice(name: "ENV", choices: ["dev", "staging", "prod"], description: "")]
                 echo "deploying to ${ENV}"
                } 
             }
