@@ -1,5 +1,6 @@
 pipeline{
        agent any
+      
     stages{
         stage("git clone"){
             steps{
@@ -7,15 +8,10 @@ pipeline{
             } 
         }
         stage("deploying to env"){
-            input{
-                message "select the enviroment to deploy to"
-                ok "Done"
-                parameters{
-                    choice(name: "ENV", choices: ["dev", "staging", "prod"], description: "")
-                }
-            }
+           
             steps{
-               script{
+               scripts{
+                input message: 'deploy to any enviroment', ok: 'Done', parameters: [ choice(name: "ENV", choices: ["dev", "staging", "prod"], description: "")]
                 echo "deploying to ${ENV}"
                } 
             }
