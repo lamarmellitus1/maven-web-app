@@ -1,11 +1,11 @@
 pipeline {
-  any
+  agent any
     tools{
         maven "m3"
     }
 
     stages {
-        stage('Clone') {
+        stage(' git Clone') {
             steps {
                git 'https://github.com/ashokitschool/maven-web-app.git'
             }
