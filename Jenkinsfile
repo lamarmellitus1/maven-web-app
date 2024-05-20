@@ -9,7 +9,7 @@ pipeline{
         }
         stage("deploying to env"){
             steps{
-               scripts{
+               script{
                 env.ENV=input message: 'deploy to any enviroment', ok: 'Done', parameters: [ choice(name: "ONE", choices: ["dev", "staging", "prod"], description: "")]
                 echo "deploying to ${ENV}"
                } 
