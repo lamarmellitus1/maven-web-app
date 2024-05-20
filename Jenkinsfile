@@ -1,21 +1,29 @@
-pipeline {
-  agent any
-    tools{
-        maven "m3"
+pipeline{
+    agent{
+       agent any
+       
     }
-
-    stages {
-        stage(' git Clone') {
-            steps {
-               git 'https://github.com/ashokitschool/maven-web-app.git'
-            }
+    stages{
+        stage("git clone"){
+            steps{
+                echo "========executing A========"
+            } 
         }
-        stage('Build') {
-            steps {
-               sh 'mvn clean package'
+        stage("deploying to env"){
+            input{
+                message "select the enviroment to deploy to"
+                ok "Done"
+                parameters{
+                    choice(name: "ENV" choices: ["dev", "staging", "prod"], description: "")
+                }
+            }
+            steps{
+               scripts{
+                echo "deploying to ${ENV}"
+               } 
             }
         }
         
-      
     }
+    
 }
