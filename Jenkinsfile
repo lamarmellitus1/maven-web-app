@@ -15,7 +15,7 @@ pipeline{
                 }
             }
             steps{
-               scripts{
+               script{
                 echo "deploying to ${ENV}"
                } 
             }
