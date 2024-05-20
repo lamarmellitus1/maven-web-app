@@ -1,11 +1,7 @@
 pipeline {
-  
-    agent {
-        label 'Ansible-Node'
-    }
-    
+  any
     tools{
-        maven "Maven-3.9.6"
+        maven "m3"
     }
 
     stages {
@@ -20,14 +16,6 @@ pipeline {
             }
         }
         
-        stage('Create Image'){
-            steps{
-               steps {
-                	script {
-                		sh 'ansible-playbook task.yml'
-                	}
-                }
-            }
-        }
+      
     }
 }
