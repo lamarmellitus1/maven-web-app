@@ -12,9 +12,9 @@ pipeline{
         stage('deploying to dockerhub'){
             steps{
                     echo 'building a docker image & deploying to dockerhub'
-                      withCredentials([string(credentialsId: 'passwds', variable: 'docker-acct-psswd')]) {
+                  withCredentials([string(credentialsId: 'passwds', variable: 'dockerwd')])  {
                     sh 'sudo docker build -t mellitus/java-web-app:latest . '
-                    sh "sudo docker login -u mellitus -p ${docker-acct-psswd}"
+                    sh "sudo docker login -u mellitus -p ${dockerwd}"
                     sh "sudo docker push mellitus/java-web-app:latest"
                       }
             }
