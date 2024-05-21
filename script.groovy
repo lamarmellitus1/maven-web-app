@@ -14,3 +14,4 @@ def buildImage(){
 def deploy(){
     echo 'deploying'
 }
+return this
