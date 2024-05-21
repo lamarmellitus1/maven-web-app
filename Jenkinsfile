@@ -15,8 +15,8 @@ pipeline{
                     echo 'building a docker image & deploying to dockerhub'
                     withCredentials([gitUsernamePassword(credentialsId: 'dockerhub', , variable: 'passwd')])
                     sh 'docker build -t mellitus/java-web-app: latest . '
-                    sh 'echo $passwd | docker login -u $dockerhub --password-stdin'
-                    sh 'docker push mellitus/java-web-app:latest'
+                    sh "docker login -u mellitus -p ${passwd}"
+                    sh "docker push mellitus/java-web-app: latest"
                 }
 
             }
