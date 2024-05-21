@@ -14,7 +14,8 @@ pipeline{
         }
         stage('maven build'){
             steps{
-                gv.buildjar()
+                script{
+                    gv.buildjar()
             }
         }
         stage('deploying to dockerhub'){
@@ -27,7 +28,8 @@ pipeline{
         }
         stage('deploy'){
             steps{
-              gv.deploy()
+             script{
+                  gv.deploy()
             }
         }
     }
