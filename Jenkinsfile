@@ -18,9 +18,7 @@ pipeline{
                     sh 'echo $passwd | docker login -u $dockerhub --password-stdin'
                     sh 'docker push mellitus/java-web-app:latest'
                 }
- {
-   
-}
+
             }
         }
     }
