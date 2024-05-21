@@ -18,6 +18,7 @@ pipeline{
                     gv.buildjar()
             }
         }
+        }
         stage('deploying to dockerhub'){
             steps{
                 script{
@@ -31,6 +32,7 @@ pipeline{
              script{
                   gv.deploy()
             }
+        }
         }
     }
 }
