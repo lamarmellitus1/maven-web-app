@@ -3,7 +3,7 @@ pipeline{
     agent any
     tools{
         maven 'm3'
-        Groovy 'groovy'
+     
     }
     stages{
         stage('init'){
