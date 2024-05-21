@@ -12,7 +12,7 @@ pipeline{
         stage('deploying to dockerhub'){
             steps{
                     echo 'building a docker image & deploying to dockerhub'
-                      withCredentials([string(credentialsId: 'dockerhub', variable: 'passwd')]) {
+                      withCredentials([string(credentialsId: 'DOCKERHUB', variable: 'passwd')]) {
                     sh 'docker build -t mellitus/java-web-app: latest . '
                     sh "docker login -u mellitus -p ${passwd}"
                     sh "docker push mellitus/java-web-app: latest"
