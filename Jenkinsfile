@@ -16,7 +16,7 @@ pipeline{
                     sh 'docker build -t mellitus/java-web-app: latest . '
                     sh "docker login -u mellitus -p ${passwd}"
                     sh "docker push mellitus/java-web-app: latest"
-
+                      }
             }
         }
     }
