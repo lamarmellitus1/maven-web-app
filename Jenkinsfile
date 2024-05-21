@@ -13,8 +13,8 @@ pipeline{
             steps{
                     echo 'building a docker image & deploying to dockerhub'
                   withCredentials([string(credentialsId: 'passwds', variable: 'dockerwd')])  {
-                    sh "docker login -u mellitus -p ${dockerwd}"
-                    sh "docker push mellitus/java-web-app:latest"
+                    sh "sudo docker login -u mellitus -p ${dockerwd}"
+                    sh "sudo docker push mellitus/java-web-app:latest"
                       }
             }
         }
