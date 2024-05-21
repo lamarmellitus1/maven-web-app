@@ -1,22 +1,27 @@
 pipeline{
-       agent any
-      
+    agent any
+    tools{
+        maven 'm3'
+    }
     stages{
-        stage("git clone"){
+        stage('maven build'){
             steps{
-                echo "========executing A========"
-            } 
-        }
-        stage("deploying to env"){
-            steps{
-               script{
-                env.ENV=input message: 'deploy to any enviroment', ok: 'Done', parameters: [ choice(name: "ONE", choices: ["dev", "staging", "prod"], description: "")]
-                echo "deploying to ${ENV}"
-                      echo "deploying"
-               } 
+                sh 'mvn clean package'
             }
         }
-        
+        stage('deploying to dockerhub'){
+            steps{
+                script{
+                    echo 'building a docker image & deploying to dockerhub'
+                    withCredentials([gitUsernamePassword(credentialsId: 'dockerhub', , variable: 'passwd')])
+                    sh 'docker build -t mellitus/java-web-app: latest . '
+                    sh 'echo $passwd | docker login -u $dockerhub --password-stdin'
+                    sh 'docker push mellitus/java-web-app:latest'
+                }
+ {
+   
+}
+            }
+        }
     }
-    
 }
