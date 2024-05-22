@@ -1,37 +1,39 @@
 def gv
 pipeline{
     agent any
+    tools{
+        maven 'm3'
+     
+    }
     stages{
-        stage("init"){
+        stage('init'){
             steps{
-           script{
-             gv=load "script.groovy"
-           }
+                script{
+                    gv = load "script.groovy"
+                }
             }
-           
         }
-        stage("buildjar"){
+        stage('maven build'){
             steps{
-               script{
+                script{
                     gv.buildjar()
             }
-           
         }
-        stage("buildImage"){
+        }
+        stage('deploying to dockerhub'){
             steps{
-               script{
-               gv.buildImage()
-               }
-            }
-           
-        }
-        stage("deploy"){
-        steps{
-            script{
-                gv.deploy()
+                script{
+                    gv.buildImage()
+                }
+ 
             }
         }
+        stage('deploy'){
+            steps{
+             script{
+                  gv.deploy()
+            }
         }
-      }
-   
+        }
+    }
 }
