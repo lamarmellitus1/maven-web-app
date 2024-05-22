@@ -10,14 +10,14 @@ pipeline{
             }
            
         }
-        stage("buildImage"){
+        stage("buildjar"){
             steps{
                script{
                     gv.buildjar()
             }
            
         }
-        stage("C"){
+        stage("buildImage"){
             steps{
                script{
                gv.buildImage()
@@ -25,7 +25,7 @@ pipeline{
             }
            
         }
-        stage(){
+        stage('deploy to vm machine){
         steps{
             script{
                 gv.deploy()
