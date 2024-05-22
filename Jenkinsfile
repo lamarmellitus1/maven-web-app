@@ -16,7 +16,7 @@ pipeline{
         stage("C"){
             steps{
                script{
-                def dockercmd= 'docker run -d -p 8080:8080 melltus/javawebapp:latest'
+                def dockercmd= 'docker run -d -p 80:80 nginx'
                 sshagent(['vm-instance']) {
                     ssh "ssh -o StrictHostKeyChecking=no mellitus@35.232.39.197  ${dockercmd}"
 }
