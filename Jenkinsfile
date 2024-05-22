@@ -1,39 +1,31 @@
-def gv
 pipeline{
-    agent any
-    tools{
-        maven 'm3'
-     
+    agent{
+        label "node"
     }
     stages{
-        stage('init'){
+        stage("A"){
             steps{
-                script{
-                    gv = load "script.groovy"
-                }
+                echo "========executing A========"
             }
+           
         }
-        stage('maven build'){
+        stage("B"){
             steps{
-                script{
-                    gv.buildjar()
+                echo "========executing B========"
             }
+           
         }
-        }
-        stage('deploying to dockerhub'){
+        stage("C"){
             steps{
-                script{
-                    gv.buildImage()
-                }
- 
+               script{
+                def dockercmd= 'docker run -d -p 8080:8080 melltus/javawebapp:latest'
+                sshagent(['vm-instance']) {
+                    ssh "ssh -o StrictHostKeyChecking=no mellitus@35.232.39.197  ${dockercmd}"
+}
+               }
             }
-        }
-        stage('deploy'){
-            steps{
-             script{
-                  gv.deploy()
-            }
-        }
+           
         }
     }
+   
 }
