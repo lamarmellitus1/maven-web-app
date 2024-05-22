@@ -14,7 +14,7 @@ def buildImage(){
 }
 
 def deploy(){
-   def dockercmd= 'docker run -d -p 8080:8080 mellitus/java-web-app:latest'
+   def dockercmd= 'docker run -d -p 8081:8080 mellitus/java-web-app:latest'
     sshagent(['vm-instance']) {
     sh "ssh -o StrictHostKeyChecking=no mellitus@35.232.39.197  ${dockercmd}"
 }
