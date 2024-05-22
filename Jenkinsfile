@@ -12,8 +12,7 @@ pipeline{
         }
         stage("buildjar"){
             steps{
-               script{
-                    gv.buildjar()
+                gv.buildjar()
             }
            
         }
@@ -25,14 +24,13 @@ pipeline{
             }
            
         }
-        stage("deploy to vm machine"){
+        stage("deploy"){
         steps{
             script{
                 gv.deploy()
             }
         }
         }
-    }
+      }
    
-}
 }
