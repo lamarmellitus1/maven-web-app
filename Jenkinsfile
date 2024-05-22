@@ -25,7 +25,7 @@ pipeline{
             }
            
         }
-        stage('deploy to vm machine'){
+        stage("deploy to vm machine"){
         steps{
             script{
                 gv.deploy()
@@ -34,4 +34,5 @@ pipeline{
         }
     }
    
+}
 }
