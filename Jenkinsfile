@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         // Define Docker Hub credentials
-        DOCKERHUB_CREDENTIALS_ID = 'dockerhub'
+        DOCKERHUB_CREDENTIALS_ID = 'dockerHUB'
         DOCKERHUB_REPO = 'mellitus/gke'
         // Define GCP credentials
         GCP_CREDENTIALS_ID = 'kubernetes'
