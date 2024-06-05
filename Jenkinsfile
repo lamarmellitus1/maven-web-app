@@ -73,7 +73,7 @@ pipeline {
                     }
 
                     // Deploy to GKE
-                    sh "kubectl set image deployment/k8s-deploy.yml mavenwebappcontainer=${DOCKERHUB_REPO}:${env.BUILD_ID} --record"
+                    sh "kubectl set image deployment/mavenwebappdeployment mavenwebappcontainer=${DOCKERHUB_REPO}:${env.BUILD_ID} --record"
                 }
             }
         }
