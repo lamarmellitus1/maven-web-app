@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     environment {
         // Define Docker Hub credentials
         DOCKERHUB_CREDENTIALS_ID = 'dockerhub'
