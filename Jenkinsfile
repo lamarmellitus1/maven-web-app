@@ -9,6 +9,7 @@ pipeline {
         GCP_PROJECT = 'basic-curve-423914-d9'
         GKE_CLUSTER = 'eks-cluster'
         GKE_ZONE = 'us-central1-c'
+        K8S_NAMESPACE = 'default'
     }
 
     stages {
@@ -73,7 +74,7 @@ pipeline {
                     }
 
                     // Deploy to GKE
-                    sh "kubectl set image deployment/mavenwebappdeployment mavenwebappcontainer=${DOCKERHUB_REPO}:${env.BUILD_ID} --record"
+                    sh "kubectl set image deployment/mavenwebappdeployment mavenwebappcontainer=${DOCKERHUB_REPO}:${env.BUILD_ID} --record -n ${K8S_NAMESPACE}"
                 }
             }
         }
