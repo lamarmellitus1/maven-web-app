@@ -18,7 +18,7 @@ spec:
   spec: 
     containers:
     - name: mavenwebappcontainer
-      image: mellitus/devops:6
+      image: mellitus/devops:tagversion
       imagePullPolicy: Always
       ports:
       - containerPort: 8080
