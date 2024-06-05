@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from version control
-                checkout scm
+                echo "checkout scm"
             }
         }
 
@@ -74,7 +74,7 @@ pipeline {
                     }
 
                     // Deploy to GKE
-                    sh "kubectl set image deployment/k8s-deploy.yml your-container-name=${DOCKERHUB_REPO}:${env.BUILD_ID} --record"
+                    sh "kubectl set image deployment/k8s-deploy.yml mavenwebappcontainer=${DOCKERHUB_REPO}:${env.BUILD_ID} --record"
                 }
             }
         }
