@@ -75,7 +75,7 @@ pipeline {
 
                     // Deploy to GKE
                      // Apply Kubernetes YAML manifest
-                    sh "kubectl apply -f Deployment.yaml -n ${K8S_NAMESPACE}"
+                    sh "kubectl apply -f Deployment.yaml"
 
                     // sh "kubectl set image deployment/deploy mavenpod=${DOCKERHUB_REPO}:${env.BUILD_ID} --record -n ${K8S_NAMESPACE}"
                 }
