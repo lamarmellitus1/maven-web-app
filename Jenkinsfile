@@ -5,7 +5,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS_ID = 'dockerHUB'
         DOCKERHUB_REPO = 'mellitus/gke'
         // Define GCP credentials
-        GCP_CREDENTIALS_ID = 'kubernetes'
+        GCP_CREDENTIALS_ID = 'gke-json'
         GCP_PROJECT = 'basic-curve-423914-d9'
         GKE_CLUSTER = 'eks-cluster'
         GKE_ZONE = 'us-central1-c'
