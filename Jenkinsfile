@@ -74,7 +74,9 @@ pipeline {
                     }
 
                     // Deploy to GKE
-                    sh "kubectl set image deployment/deploy mavenpod=${DOCKERHUB_REPO}:${env.BUILD_ID} --record -n ${K8S_NAMESPACE}"
+                    sh "kubectl run nginx-deployment --image=nginx --port=80 --restart=Always"
+
+                    // sh "kubectl set image deployment/deploy mavenpod=${DOCKERHUB_REPO}:${env.BUILD_ID} --record -n ${K8S_NAMESPACE}"
                 }
             }
         }
