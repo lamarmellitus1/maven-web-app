@@ -58,10 +58,10 @@ pipeline {
 			    echo "Deployment started ..."
 			    sh 'ls -ltr'
 			    sh 'pwd'
-			    sh "sed -i 's/tagversion/${env.BUILD_ID}/g' k8s-deploy.yaml"
-			    echo "Start deployment of k8s-deploy.yaml"
-			    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'k8s-deploy.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-				echo "Start deployment of k8s-deploy.yaml"
+			    sh "sed -i 's/tagversion/${env.BUILD_ID}/g' k8s-deploy.yml"
+			    echo "Start deployment of k8s-deploy.yml"
+			    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'k8s-deploy.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+				echo "Start deployment of k8s-deploy.yml"
 			          echo "Deployment Finished ..."
 		    }
 	    }
