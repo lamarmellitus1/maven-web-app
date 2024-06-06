@@ -1,6 +1,6 @@
 <html>
 <body>
-<h1><font color='red'> WELCOME TO K8S SESSION <font></h1>
+<h1><font color='black'> WELCOME TO K8S SESSION <font></h1>
 
 <h2> this is the lesson on maven application deployment on EKS </h2>
   
